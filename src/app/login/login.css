@@ -1,0 +1,187 @@
+:root {
+  --roxo-escuro: #380036;
+  --creme: #f4f3ee;
+  --acai: #854280;
+  --lilas: #d183c9;
+}
+
+/* Layout Principal */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.form-lado {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--roxo-escuro);
+}
+
+/* Card do Formulário */
+.form-container {
+  padding: 35px 30px;
+  max-width: 450px;
+  width: 100%;
+  background-color: var(--creme);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.header-form-login {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header-form-login h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: var(--roxo-escuro);
+}
+
+.header-form-login h4 {
+  font-size: 15px;
+  color: #666;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Inputs & Labels */
+.mb-3 {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: var(--roxo-escuro);
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form-control:focus {
+  border-color: var(--acai);
+  box-shadow: 0 0 0 2px rgba(133, 66, 128, 0.2);
+}
+
+/* Campo de Senha */
+.container-label-senha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.forget-password-link {
+  color: var(--acai);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.forget-password-link:hover {
+  color: var(--roxo-escuro);
+  text-decoration: underline;
+}
+
+.input-senha {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-senha .form-control {
+  padding-right: 40px;
+}
+
+.icone-olho {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: var(--acai);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.icone-olho:hover {
+  opacity: 0.75;
+}
+
+/* Botão Customizado */
+.btn-custom {
+  width: 100%;
+  background-color: var(--acai);
+  color: var(--creme);
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: var(--roxo-escuro);
+}
+
+/* Rodapé do Formulário */
+#text-cadastro {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+#text-cadastro p {
+  margin: 0;
+  color: #444;
+}
+
+#link-cadastro {
+  color: var(--acai);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+#link-cadastro:hover {
+  text-decoration: underline;
+  color: var(--roxo-escuro);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 25px 20px;
+  }
+
+  .header-form-login h2 {
+    font-size: 24px;
+  }
+
+  .container-label-senha {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

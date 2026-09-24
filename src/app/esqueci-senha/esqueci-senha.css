@@ -1,0 +1,138 @@
+:root {
+  --roxo-escuro: #380036;
+  --creme: #f4f3ee;
+  --acai: #854280;
+  --lilas: #d183c9;
+}
+
+/* Layout Principal */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.form-lado {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--roxo-escuro);
+}
+
+/* Card do Formuálario */
+.form-container {
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  background-color: var(--creme);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+}
+
+.header-form-login {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--roxo-escuro);
+}
+
+h4 {
+  font-size: 20px;
+  color: #666;
+}
+
+/* Rodapé do Formuálario */
+#text-cadastro {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--lilas);
+}
+
+#text-cadastro p {
+  margin: 0;
+  font-size: 20px;
+}
+
+#text-cadastro:hover{
+    color: var(--acai);
+}
+
+#link-cadastro {
+  color: var(--acai);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#link-cadastro:hover {
+  text-decoration: underline;
+  color: var(--lilas);
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 4px; /* Bootstrap já dá um espaço com mb-3, então ajuste conforme necessário */
+}
+
+.form-control:focus {
+  border-color: var(--acai);
+  box-shadow: 0 0 0 2px rgba(133, 66, 128, 0.15);
+}
+
+.input-senha {
+  position: relative;
+}
+
+.icone-olho {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Botão Customizado */
+.btn-custom {
+  background-color: var(--acai);
+  color: var(--creme);
+  border: none;
+  font-weight: bold;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  margin: 15px;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.btn-custom:hover {
+  background-color: var(--roxo-escuro);
+  color: var(--creme) !important;
+}
+
+.container-label-senha{
+    justify-content: space-between;
+
+}
+
+.forget-password-link{
+    color: var(--lilas);
+    text-decoration: none;
+    margin-left: 250px;
+}
+
+.forget-password-link:hover{
+    color:var(--acai);
+}

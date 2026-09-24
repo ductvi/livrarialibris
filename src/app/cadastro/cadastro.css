@@ -1,0 +1,199 @@
+:root {
+  --roxo-escuro: #380036;
+  --creme: #f4f3ee;
+  --acai: #854280;
+  --lilas: #d183c9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Layout Principal */
+.cadastro-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.form-lado {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--roxo-escuro);
+}
+
+.imagem-lado {
+  flex: 1;
+  background-color: var(--roxo-escuro);
+}
+
+.imagem-lado img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card do Formulário */
+.form-container {
+  padding: 30px;
+  max-width: 480px;
+  width: 100%;
+  background-color: var(--creme);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+}
+
+.header-form-cadastro {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--roxo-escuro);
+}
+
+h4 {
+  font-size: 16px;
+  color: #666;
+  font-weight: 400;
+}
+
+/* Campos do Form */
+.mb-3 {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--acai);
+  box-shadow: 0 0 0 3px rgba(133, 66, 128, 0.2);
+}
+
+/* Input de Senha e Ícone */
+.input-senha {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-senha .form-control {
+  padding-right: 40px;
+}
+
+.icone-olho {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  user-select: none;
+}
+
+.icone-olho:hover {
+  color: var(--acai);
+}
+
+/* Botão Customizado */
+.d-grid {
+  display: grid;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn-custom {
+  width: 100%;
+  background-color: var(--acai);
+  color: var(--creme);
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-custom:hover {
+  background-color: var(--roxo-escuro);
+  color: var(--creme);
+}
+
+/* Rodapé do Formulário */
+#text-login {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+#text-login p {
+  margin: 0;
+  font-size: 15px;
+  color: #444;
+}
+
+#link-login {
+  color: var(--acai);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#link-login:hover {
+  text-decoration: underline;
+  color: var(--lilas);
+}
+
+/* Responsividade para Telas Menores (Tablets e Celulares) */
+@media (max-width: 900px) {
+  .imagem-lado {
+    display: none;
+  }
+
+  .form-lado {
+    padding: 16px;
+  }
+
+  .form-container {
+    padding: 24px;
+    box-shadow: none;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+}

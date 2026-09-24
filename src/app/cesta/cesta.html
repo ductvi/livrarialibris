@@ -1,0 +1,68 @@
+<section class="cesta-container">
+  <h1 class="titulo-cesta">Meu Carrinho</h1>
+
+  <!-- Estado: Carrinho Vazio -->
+  <div *ngIf="cestaService.listaCesta.length === 0" class="cesta-vazia">
+    <p>Sua cesta está vazia.</p>
+    <a [routerLink]="['/telainicial']" class="btn-voltar">Continuar comprando</a>
+  </div>
+
+  <!-- Estado: Carrinho com Itens -->
+  <div *ngIf="cestaService.listaCesta.length > 0" class="cesta-layout">
+    <div class="lista-itens">
+      <div class="item-cesta" *ngFor="let item of cestaService.listaCesta">
+        <img [src]="item.produto.codigo + '.jpg'" [alt]="item.produto.nome" class="item-imagem">
+
+        <div class="item-info">
+          <div class="item-titulo-linha">
+            <h3>{{ item.produto.nome }}</h3>
+            <button (click)="cestaService.removerProduto(item.produto.codigo)" class="btn-lixeira" aria-label="Remover produto">
+              🗑
+            </button>
+          </div>
+
+          <span class="item-label">Quantidade</span>
+          <div class="item-quantidade">
+            <button (click)="cestaService.diminuirQuantidade(item.produto.codigo)" class="btn-qtd" aria-label="Diminuir quantidade">−</button>
+            <span>{{ item.quantidadeNoCarrinho }}</span>
+            <button (click)="cestaService.adicionarProdutoCarrinho(item.produto)" class="btn-qtd" aria-label="Aumentar quantidade">+</button>
+          </div>
+        </div>
+
+        <div class="item-subtotal">
+          R$ {{ item.calcularSubTotal().toFixed(2) }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Painel de Resumo -->
+    <div class="resumo-compra">
+      <h3>Resumo da compra</h3>
+
+      <div class="resumo-linha">
+        <span>Produto(s)</span>
+        <span>R$ {{ cestaService.calcularSubtotalCheio().toFixed(2) }}</span>
+      </div>
+
+      <div class="resumo-linha" *ngIf="cestaService.calcularDesconto() > 0">
+        <span>Desconto</span>
+        <span class="desconto-valor">- R$ {{ cestaService.calcularDesconto().toFixed(2) }}</span>
+      </div>
+
+      <div class="resumo-linha">
+        <span>Frete</span>
+        <span class="frete-gratis">Grátis</span>
+      </div>
+
+      <hr>
+
+      <div class="resumo-linha resumo-total">
+        <span>Total</span>
+        <span>R$ {{ cestaService.calcularTotal().toFixed(2) }}</span>
+      </div>
+
+      <button class="btn-finalizar">Finalizar Compra</button>
+      <button class="btn-limpar" (click)="cestaService.limparCarrinho()">Limpar Carrinho</button>
+    </div>
+  </div>
+</section>

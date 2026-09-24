@@ -1,0 +1,74 @@
+<div class="detalhes-container" *ngIf="produto">
+  <div class="produto-grid">
+
+    <div class="galeria">
+      <div class="miniaturas">
+        <img [src]="produto.imagem" (click)="imagemAtiva = produto.imagem" [class.active]="imagemAtiva === produto.imagem" alt="Capa">
+      </div>
+      <div class="imagem-principal">
+        <img [src]="imagemAtiva || produto.imagem" [alt]="produto.nome">
+      </div>
+    </div>
+
+    <div class="info-principal">
+      <h1 class="produto-titulo">{{ produto.nome }}</h1>
+      <h6 class="text-muted">{{ produto.autor }}</h6>
+
+      <div class="preco-bloco" *ngIf="produto.valorPromo > 0">
+        <small class="preco-de">de: <s>R$ {{ produto.valor }}</s></small>
+        <div class="preco-com-desconto">
+          <strong>R$ {{ produto.valorPromo }}</strong>
+          <span class="badge-desconto">-{{ calcularDesconto(produto.valor, produto.valorPromo) }}%</span>
+        </div>
+      </div>
+
+      <div class="preco-bloco" *ngIf="!produto.valorPromo || produto.valorPromo === 0">
+        <strong>R$ {{ produto.valor }}</strong>
+      </div>
+
+      <div class="detalhes-tecnicos">
+        <h3>Detalhes do produto:</h3>
+        <ul>
+          <li><strong>Ano de publicação:</strong> {{ produto.ano }}</li>
+          <li><strong>Tamanho da letra:</strong> {{ produto.tamanhoLetra }}</li>
+          <li><strong>Capa do livro:</strong> {{ produto.tipoCapa }}</li>
+          <li><strong>Gênero:</strong> {{ produto.genero }}</li>
+          <li><strong>Número de páginas:</strong> {{ produto.paginas }}</li>
+          <li><strong>ISBN:</strong> {{ produto.isbn }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-compra">
+      <div class="preco-card" *ngIf="produto.valorPromo > 0">
+        <small class="preco-de">R$ {{ produto.valor }}</small>
+        <div class="preco-atual">
+          <strong>R$ {{ produto.valorPromo }}</strong>
+          <span class="badge-desconto">-{{ calcularDesconto(produto.valor, produto.valorPromo) }}%</span>
+        </div>
+      </div>
+
+      <div class="preco-card" *ngIf="!produto.valorPromo || produto.valorPromo === 0">
+        <strong>R$ {{ produto.valor }}</strong>
+      </div>
+
+      <button type="button" class="btn-comprar" *ngIf="produto.quantidade > 0">Adicionar ao Carrinho</button>
+      <button type="button" class="btn-comprar" disabled *ngIf="produto.quantidade === 0">Fora de estoque</button>
+
+      <div class="garantias">
+        <p><span>↺</span> <strong>Devolução grátis.</strong> Você tem 30 dias a partir da data de recebimento.</p>
+        <p><span>🛡</span> <strong>Compra Garantida.</strong> Receba o produto que está esperando ou devolvemos o dinheiro.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sinopse-container">
+    <h2>Sinopse</h2>
+    <p>{{ produto.sinopse }}</p>
+  </div>
+</div>
+
+<div *ngIf="!produto" class="produto-nao-encontrado">
+  <p>Produto não encontrado.</p>
+</div>

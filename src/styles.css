@@ -1,0 +1,270 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --roxo-escuro: #380036;
+  --creme: #f4f3ee;
+  --acai: #854280;
+  --roxo-muito-escuro: #150811;
+  --lilas: #d183c9;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, nav, footer {
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+header{
+    background-color:var(--roxo-escuro);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+}
+
+.icones-header {
+    color: var(--creme);
+    margin: 0px 15px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o input e o botão */
+  width: 100%;
+  max-width: 600px; /* Ajuste o limite máximo desejado */
+}
+
+.search-bar {
+    margin: 10px;
+    width: 100%;
+    border-radius: 30px;
+    padding: 10px;
+    background-color: var(--creme);
+}
+
+.container-icons {
+    padding: 5px;
+}
+
+nav{
+    background-color: var(--acai);
+    color: var(--creme);
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 10px 20px; /* 10px cima/baixo | 20px direita/esquerda */
+}
+
+a{
+    text-decoration: none;
+}
+.container-nav {
+    margin: 0px 5px 0px 5px;
+    padding: 10px 10px;
+    width: 150px;
+
+    text-align: center;
+    font-size: 18px;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+.container-nav a {
+    text-decoration: none;
+}
+
+.container-nav:hover{
+    background-color: var(--lilas);
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+footer{
+    background-color: var(--roxo-muito-escuro);
+    align-items: center;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--creme);
+}
+
+.titulos-footer{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icons-footer{
+    align-items: center;
+    display: flex;
+    padding: 0px 5px;
+}
+
+.mg-15{
+    margin: 0px 15px 10px 15px;
+}
+
+.mr-10{
+    margin-right: 10px;
+}
+
+.logotipo-footer{
+    margin-left: 10px;
+}
+
+a{
+    color: var(--creme);
+}
+
+.badge-desconto {
+  background-color: #28a745;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: 15px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 16px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+
+  /* HEADER */
+
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  header > a:first-child img {
+    max-width: 150px;
+  }
+
+  .search-container {
+    order: 3;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .search-bar {
+    margin: 0;
+  }
+
+  .container-icons {
+    padding: 0;
+  }
+
+  .icones-header {
+    width: 32px;
+    height: 32px;
+    margin: 0 8px;
+  }
+
+
+  /* MENU */
+
+  nav {
+    padding: 8px;
+    gap: 3px;
+  }
+
+  .container-nav {
+    min-width: auto;
+    padding: 8px 10px;
+    font-size: 15px;
+  }
+
+
+  /* FOOTER */
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+    padding: 25px 15px;
+  }
+
+  .logotipo-footer {
+    margin-left: 0;
+    max-width: 150px;
+  }
+
+  .icons-footer {
+    justify-content: center;
+  }
+
+  .mg-15 {
+    margin: 0 8px 10px 8px;
+  }
+
+  .mr-10 {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+
+  header {
+    padding: 10px;
+  }
+
+  header > a:first-child img {
+    max-width: 120px;
+  }
+
+  .icones-header {
+    width: 28px;
+    height: 28px;
+    margin: 0 5px;
+  }
+
+  .container-nav {
+    padding: 7px 8px;
+    font-size: 14px;
+  }
+
+  .search-button {
+    padding: 8px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
+
+  .titulos-footer {
+    font-size: 16px;
+  }
+}

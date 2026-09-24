@@ -1,0 +1,156 @@
+.detalhes-container {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.produto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 300px;
+  gap: 30px;
+}
+
+/* Galeria de Fotos */
+.galeria {
+  display: flex;
+  gap: 15px;
+}
+
+.miniaturas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.miniaturas img {
+  width: 50px;
+  height: 70px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.miniaturas img.active {
+  border-color: var(--acai);
+  border-width: 2px;
+}
+
+.imagem-principal img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 6px;
+}
+
+/* Informações */
+.produto-titulo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.preco-bloco {
+  margin: 15px 0;
+}
+
+.preco-de {
+  color: #777;
+  font-size: 14px;
+}
+
+.preco-com-desconto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.preco-com-desconto strong, .preco-atual strong {
+  font-size: 28px;
+  color: #000;
+}
+
+.detalhes-tecnicos h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.detalhes-tecnicos ul {
+  list-style: none;
+  padding: 0;
+}
+
+.detalhes-tecnicos li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+/* Card lateral de Compra */
+.card-compra {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+  background-color: #fafafa;
+}
+
+.garantias {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #666;
+}
+
+.garantias p {
+  margin-bottom: 12px;
+}
+
+/* Sinopse */
+.sinopse-container {
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.sinopse-container h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sinopse-container p {
+  line-height: 1.6;
+  color: #333;
+}
+
+button {
+  padding: 8px 5px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin: 5px;
+}
+
+.btn-comprar {
+  color: var(--creme);
+  background-color: green;
+  border-color: green;
+}
+
+.btn-comprar:hover {
+  background-color: rgb(5, 158, 5);
+  border-color: rgb(5, 158, 5);
+}
+
+/* Responsividade Básica */
+@media (max-width: 992px) {
+  .produto-grid {
+    grid-template-columns: 1fr;
+  }
+}
