@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { Produto } from '../models/produto';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Produto } from '../models/produto';
 import { Produtoservice } from '../produtoservice';
 import { Cestaservice } from '../cestaservice';
 
@@ -11,22 +10,45 @@ import { Cestaservice } from '../cestaservice';
   templateUrl: './telainicial.html',
   styleUrl: './telainicial.css',
 })
-export class Telainicial {
+export class Telainicial implements OnInit {
   private produtoService = inject(Produtoservice);
-  private router = inject(Router);
   private cestaService = inject(Cestaservice);
-  lista: Produto[] = this.produtoService.getLista();
-  listaMaisVendidos: Produto[] = this.produtoService.getListaMaisVendidos();
+  private cdr = inject(ChangeDetectorRef);
+
+  lista: Produto[] = [];
+  listaMaisVendidos: Produto[] = [];
+
+  ngOnInit(): void {
+    this.produtoService.getLista().subscribe({
+      next: (dados) => {
+        this.lista = dados;
+        this.cdr.detectChanges();
+      },
+      error: (erro) => {
+        console.error('ERRO ao buscar novidades:', erro);
+      }
+    });
+
+    this.produtoService.getListaMaisVendidos().subscribe({
+      next: (dados) => {
+        this.listaMaisVendidos = dados;
+        this.cdr.detectChanges();
+      },
+      error: (erro) => {
+        console.error('ERRO ao buscar mais vendidos:', erro);
+      }
+    });
+  }
 
   calcularDesconto(valor: number, valorPromo: number): number {
     return this.produtoService.calcularDesconto(valor, valorPromo);
   }
 
   verDetalhes(codigo: number): void {
-    this.router.navigate(['/detalheproduto', codigo]);
+    this.produtoService.verDetalhes(codigo);
   }
 
-  adicionarAoCarrinho(produto:Produto){
-    this.cestaService.adicionarProdutoCarrinho(produto)
+  adicionarAoCarrinho(produto: Produto): void {
+    this.cestaService.adicionarProdutoCarrinho(produto);
   }
 }

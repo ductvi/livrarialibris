@@ -52,7 +52,7 @@
         <strong>R$ {{ produto.valor }}</strong>
       </div>
 
-      <button type="button" class="btn-comprar" *ngIf="produto.quantidade > 0">Adicionar ao Carrinho</button>
+      <button type="button" class="btn-comprar" *ngIf="produto.quantidade > 0" (click)="adicionarAoCarrinho(produto)">Adicionar ao Carrinho</button>
       <button type="button" class="btn-comprar" disabled *ngIf="produto.quantidade === 0">Fora de estoque</button>
 
       <div class="garantias">
@@ -69,6 +69,6 @@
   </div>
 </div>
 
-<div *ngIf="!produto" class="produto-nao-encontrado">
+<div *ngIf="!carregando && !produto" class="produto-nao-encontrado">
   <p>Produto não encontrado.</p>
 </div>

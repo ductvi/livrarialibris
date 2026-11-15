@@ -1,10 +1,10 @@
 export class Produto {
-  codigo: number = 0;
-  nome: string = "";
-  autor: string = "";
+  codigo: number = 0; //
+  nome: string = ""; //
   imagem: string = "";
-  valor: number = 0;
-  valorPromo: number = 0;
+  autor: string = ""; //
+  valor: number = 0; //
+  valorPromo: number = 0; //
   ano: number = 0;
   tamanhoLetra: string = "";
   tipoCapa: string = "";

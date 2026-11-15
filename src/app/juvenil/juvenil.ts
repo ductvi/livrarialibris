@@ -1,8 +1,7 @@
-import { Component, inject} from '@angular/core';
-import { Router } from '@angular/router';
-import { Produtoservice } from '../produtoservice';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Produto} from '../models/produto';
+import { Produto } from '../models/produto';
+import { Produtoservice } from '../produtoservice';
 import { Cestaservice } from '../cestaservice';
 
 @Component({
@@ -11,24 +10,31 @@ import { Cestaservice } from '../cestaservice';
   templateUrl: './juvenil.html',
   styleUrl: './juvenil.css',
 })
-export class Juvenil {
+export class Juvenil implements OnInit {
   private produtoService = inject(Produtoservice);
-  private router = inject(Router);
+  private cestaService = inject(Cestaservice);
+  private cdr = inject(ChangeDetectorRef);
+  listaJuvenis: Produto[] = [];
 
-  listaJuvenis: Produto[] = this.produtoService.getListaJuvenis()
+  ngOnInit(): void {
+    this.produtoService.getListaJuvenis().subscribe({
+      next: (dados) => {
+        this.listaJuvenis = dados;
+        this.cdr.detectChanges();
+      },
+      error: (erro) => console.error('Erro ao carregar Juvenil:', erro),
+    });
+  }
 
   calcularDesconto(valor: number, valorPromo: number): number {
     return this.produtoService.calcularDesconto(valor, valorPromo);
   }
 
   verDetalhes(codigo: number): void {
-    this.router.navigate(['/detalheproduto', codigo]);
+    this.produtoService.verDetalhes(codigo);
   }
 
-  private cestaService = inject(Cestaservice);
-  
-  adicionarAoCarrinho(produto:Produto){
-    this.cestaService.adicionarProdutoCarrinho(produto)
+  adicionarAoCarrinho(produto: Produto): void {
+    this.cestaService.adicionarProdutoCarrinho(produto);
   }
-
 }

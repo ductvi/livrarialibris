@@ -1,1 +1,69 @@
-<p>resultado-busca works!</p>
+<section class="secao-produtos">
+  <div class="header-secao">
+    <h1 class="titulo" *ngIf="termo">Resultados para "{{ termo }}"</h1>
+    <h1 class="titulo" *ngIf="!termo">Pesquisar livros</h1>
+    <p class="text-muted" *ngIf="!carregando && termo">
+      {{ lista.length }} {{ lista.length === 1 ? 'livro encontrado' : 'livros encontrados' }}
+    </p>
+  </div>
+
+  <!-- Estado de carregamento -->
+  <div class="container-cards text-center py-5" *ngIf="carregando">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Buscando...</span>
+    </div>
+    <p class="mt-2">Buscando livros...</p>
+  </div>
+
+  <!-- Estado vazio (nenhum resultado encontrado) -->
+  <div class="container-cards text-center py-5" *ngIf="!carregando && termo && lista.length === 0">
+    <h4>Nenhum livro encontrado para "{{ termo }}".</h4>
+    <p class="text-muted">Tente buscar por outro título, autor ou palavra-chave.</p>
+  </div>
+
+  <!-- Grid de resultados -->
+  <div class="container-cards" *ngIf="!carregando && lista.length > 0">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
+      <div class="col" *ngFor="let obj of lista">
+        <div class="card h-100" [attr.data-keywords]="obj.keywords">
+          <img [src]="obj.codigo + '.jpg'" class="card-img-top" [alt]="obj.nome" />
+
+          <div class="card-body">
+            <div class="card-header">
+              <h5 class="card-title">{{ obj.nome }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ obj.autor }}</h6>
+            </div>
+
+            <div *ngIf="obj.valorPromo > 0" class="preco-container">
+              <small class="text-muted">de: <s>R$ {{ obj.valor | number:'1.2-2' }}</s></small>
+              <span class="badge-desconto">-{{ calcularDesconto(obj.valor, obj.valorPromo) }}% OFF</span>
+              <strong>R$ {{ obj.valorPromo | number:'1.2-2' }}</strong>
+            </div>
+
+            <div class="preco" *ngIf="obj.valorPromo === 0 || !obj.valorPromo">
+              <strong>R$ {{ obj.valor | number:'1.2-2' }}</strong>
+            </div>
+
+            <div class="button-container">
+              <button class="btn-detalhe" (click)="verDetalhes(obj.codigo)">
+                Ver Detalhes
+              </button>
+
+              <button
+                type="button"
+                (click)="adicionarAoCarrinho(obj)"
+                class="btn-comprar"
+                *ngIf="obj.quantidade > 0"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                </svg>
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

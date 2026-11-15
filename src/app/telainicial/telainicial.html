@@ -58,7 +58,7 @@
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
             <div class="col" *ngFor="let obj of listaMaisVendidos">
                 <div class="card h-100" [attr.data-keywords]="obj.keywords">
-                    <img [src]= " obj.codigo + '.jpg'" class="card-img-top" [alt]="obj.nome">
+                    <img [src]="obj.codigo + '.jpg'" class="card-img-top" [alt]="obj.nome">
 
                     <div class="card-body">
                         <div class="card-header">

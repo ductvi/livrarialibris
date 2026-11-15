@@ -20,6 +20,7 @@ export const routes: Routes = [
     {path: "detalheproduto/:codigo", component: DetalheProduto},
     {path: "esqueci-senha", component: EsqueciSenha},
     {path: "telainicial", component: Telainicial},
+    {path: "resultado-busca/:termo", component: ResultadoBusca},
     {path: "resultado-busca", component: ResultadoBusca}, 
     {path: "telainicial", component: Telainicial},
     {path: "cesta", component: Cesta},
