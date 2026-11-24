@@ -3,8 +3,8 @@
     <img src="/logotipo.png" alt="logotipo">
   </a>
 
-  <form class="search-container">
-    <input type="search" name="busca" class="search-bar" placeholder="Pesquisar">
+  <form class="search-container" (submit)="$event.preventDefault(); pesquisar(campoBusca.value)">
+    <input #campoBusca type="search" name="busca" class="search-bar" placeholder="Pesquisar">
     <button type="submit" class="search-button btn btn-light">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -20,11 +20,19 @@
       <span class="cart-badge" *ngIf="cestaService.contarItens() > 0">{{ cestaService.contarItens() }}</span>
     </a>
 
-    <a [routerLink]="['/cadastro']">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-fill icones-header" viewBox="0 0 16 16">
-        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-      </svg>
-    </a>
+    <ng-container *ngIf="clienteService.clienteLogado as cliente; else usuarioDeslogado">
+      <span class="saudacao">Olá, {{ primeiroNome(cliente.nome) }}!</span>
+      <a [routerLink]="['/meus-pedidos']" class="saudacao">Meus Pedidos</a>
+      <button type="button" class="btn-sair" (click)="sair()">Sair</button>
+    </ng-container>
+
+    <ng-template #usuarioDeslogado>
+      <a [routerLink]="['/cadastro']">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-fill icones-header" viewBox="0 0 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
+      </a>
+    </ng-template>
   </div>
 </header>
 

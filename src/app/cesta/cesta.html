@@ -1,6 +1,11 @@
 <section class="cesta-container">
   <h1 class="titulo-cesta">Meu Carrinho</h1>
 
+  <!-- Mensagem do pedido: fica fora dos blocos abaixo para não sumir quando a cesta esvaziar -->
+  @if (mensagem()) {
+    <p class="mensagem-cesta" role="status">{{ mensagem() }}</p>
+  }
+
   <!-- Estado: Carrinho Vazio -->
   <div *ngIf="cestaService.listaCesta.length === 0" class="cesta-vazia">
     <p>Sua cesta está vazia.</p>
@@ -61,7 +66,7 @@
         <span>R$ {{ cestaService.calcularTotal().toFixed(2) }}</span>
       </div>
 
-      <button class="btn-finalizar">Finalizar Compra</button>
+      <button class="btn-finalizar" (click)="finalizarCompra()" [disabled]="finalizando()">Finalizar Compra</button>
       <button class="btn-limpar" (click)="cestaService.limparCarrinho()">Limpar Carrinho</button>
     </div>
   </div>

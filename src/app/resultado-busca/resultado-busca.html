@@ -1,14 +1,11 @@
 <section class="secao-produtos">
   <div class="header-secao">
-    <h1 class="titulo" *ngIf="termo">Resultados para "{{ termo }}"</h1>
-    <h1 class="titulo" *ngIf="!termo">Pesquisar livros</h1>
-    <p class="text-muted" *ngIf="!carregando && termo">
-      {{ lista.length }} {{ lista.length === 1 ? 'livro encontrado' : 'livros encontrados' }}
-    </p>
+    <h1 class="titulo" *ngIf="termo()">Resultados para "{{ termo() }}"</h1>
+    <h1 class="titulo" *ngIf="!termo()">Pesquisar livros</h1>
   </div>
 
   <!-- Estado de carregamento -->
-  <div class="container-cards text-center py-5" *ngIf="carregando">
+  <div class="container-cards text-center py-5" *ngIf="carregando()">
     <div class="spinner-border" role="status">
       <span class="visually-hidden">Buscando...</span>
     </div>
@@ -16,15 +13,15 @@
   </div>
 
   <!-- Estado vazio (nenhum resultado encontrado) -->
-  <div class="container-cards text-center py-5" *ngIf="!carregando && termo && lista.length === 0">
-    <h4>Nenhum livro encontrado para "{{ termo }}".</h4>
+  <div class="container-cards text-center py-5" *ngIf="!carregando() && termo() && lista().length === 0">
+    <h4>Nenhum livro encontrado para "{{ termo() }}".</h4>
     <p class="text-muted">Tente buscar por outro título, autor ou palavra-chave.</p>
   </div>
 
   <!-- Grid de resultados -->
-  <div class="container-cards" *ngIf="!carregando && lista.length > 0">
+  <div class="container-cards" *ngIf="!carregando() && lista().length > 0">
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
-      <div class="col" *ngFor="let obj of lista">
+      <div class="col" *ngFor="let obj of lista()">
         <div class="card h-100" [attr.data-keywords]="obj.keywords">
           <img [src]="obj.codigo + '.jpg'" class="card-img-top" [alt]="obj.nome" />
 

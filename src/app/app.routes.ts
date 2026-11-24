@@ -12,6 +12,7 @@ import { Lancamentos } from './lancamentos/lancamentos';
 import { Ficcao } from './ficcao/ficcao';
 import { Autoajuda } from './autoajuda/autoajuda';
 import { Filosofia } from './filosofia/filosofia';
+import { MeusPedidos } from './meus-pedidos/meus-pedidos';
 
 export const routes: Routes = [
     {path: "", component: Telainicial},
@@ -30,4 +31,5 @@ export const routes: Routes = [
     {path: "ficcao", component: Ficcao},
     {path: "autoajuda", component: Autoajuda},
     {path: "filosofia", component: Filosofia},
+    { path: 'meus-pedidos', component: MeusPedidos}
 ];

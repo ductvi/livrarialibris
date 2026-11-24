@@ -1,16 +1,16 @@
 <div class="login-container">
   <div class="form-lado">
     <div class="form-container">
-      
+
       <div class="header-form-login">
         <h2>Bem-vindo de volta</h2>
         <h4>Preencha os dados para acessar sua conta</h4>
       </div>
 
-      <form>
+      <form [formGroup]="form" (ngSubmit)="entrar()">
         <div class="mb-3">
           <label for="email" class="form-label">E-mail:</label>
-          <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" required>
+          <input formControlName="email" type="email" class="form-control" id="email" placeholder="nome@exemplo.com" required>
         </div>
 
         <div class="mb-3">
@@ -18,15 +18,16 @@
             <label for="senha" class="form-label">Senha:</label>
             <a [routerLink]="['/esqueci-senha']" class="forget-password-link">Esqueceu a senha?</a>
           </div>
-          
+
           <div class="input-senha">
-            <input 
-              [type]="mostrarSenha ? 'text' : 'password'" 
-              class="form-control" 
-              id="senha" 
-              placeholder="Digite sua senha" 
+            <input
+              [type]="mostrarSenha ? 'text' : 'password'"
+              class="form-control"
+              id="senha"
+              formControlName="senha"
+              placeholder="Digite sua senha"
               required>
-            
+
             <span class="icone-olho" (click)="toggleSenha()" aria-label="Alternar visibilidade da senha">
               @if (mostrarSenha) {
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
@@ -44,12 +45,16 @@
           </div>
         </div>
 
+        @if (erro()) {
+          <p class="mensagem-erro" role="alert">{{ erro() }}</p>
+        }
+
         <div class="d-grid gap-2">
           <button type="submit" class="btn-custom">Entrar</button>
         </div>
 
         <div id="text-cadastro">
-          <p>Não tem uma conta?</p> 
+          <p>Não tem uma conta?</p>
           <a [routerLink]="['/cadastro']" id="link-cadastro">Cadastre-se</a>
         </div>
       </form>

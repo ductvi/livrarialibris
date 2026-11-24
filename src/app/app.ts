@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { Cestaservice } from './cestaservice';
+import { Clienteservice } from './clienteservice';
 import { CommonModule } from '@angular/common';
 
 
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   cestaService = inject(Cestaservice);
+  clienteService = inject(Clienteservice);
   protected readonly title = signal('livrarialibris');
 
   private router = inject(Router);
@@ -21,5 +23,14 @@ export class App {
     if (busca) {
       this.router.navigate(['/resultado-busca', busca]);
     }
+  }
+
+  primeiroNome(nome: string | undefined): string {
+    return (nome ?? '').trim().split(' ')[0];
+  }
+
+  sair(): void {
+    this.clienteService.sair();
+    this.router.navigate(['/telainicial']);
   }
 }
