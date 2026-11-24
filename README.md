@@ -1,59 +1,41 @@
-# Livrarialibris
+# 📚 Livraria Libris — Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.4.
+Interface web de e-commerce da **Livraria Libris**, desenvolvida em **Angular** com **TypeScript**, **Bootstrap** e CSS customizado. O projeto permite navegar por categorias literárias, pesquisar livros por título, autor ou palavras-chave, gerenciar o carrinho de compras, realizar cadastro/login de clientes e acompanhar o histórico de pedidos.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✨ Funcionalidades
 
-```bash
-ng serve
-```
+- **Vitrine & Catálogo por Categorias**: Exibição de livros em destaque na página inicial e filtragem por gêneros (*Lançamentos, Clássicos, Juvenil, Ficção, Autoajuda e Filosofia*).
+- **Busca Dinâmica**: Pesquisa em tempo real por título, autor, sinopse ou palavras-chave com atualização reativa via Signals e RxJS.
+- **Detalhes do Produto**: Visualização completa das informações do livro (sinopse, ISBN, número de páginas, tipo de capa, tamanho da letra e preços promocionais com cálculo automático de desconto).
+- **Cesta de Compras**: Adição e remoção de livros, controle de quantidades, contador dinâmico no cabeçalho e persistência no navegador.
+- **Autenticação de Clientes**: Cadastro, login e logout com persistência de sessão via `localStorage`.
+- **Histórico de Pedidos (`Meus Pedidos`)**: Consulta de pedidos realizados pelo cliente logado, exibindo data, modalidade de entrega, observações, itens adquiridos e valor total.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛠️ Tecnologias Utilizadas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Angular** (Standalone Components, Signals, Reactive Routing)
+- **TypeScript**
+- **RxJS** (`switchMap`, `forkJoin`, `combineLatest`)
+- **HTML5 & CSS3** (Variáveis CSS, Flexbox, Grid e responsividade)
+- **Bootstrap 5** & **Bootstrap Icons**
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📂 Estrutura Principal do Projeto
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```text
+src/
+└── app/
+    ├── models/              # Interfaces TypeScript (Produto, Cliente, Pedido, ItemPedido)
+    ├── meus-pedidos/        # Página de histórico de pedidos do cliente
+    ├── resultado-busca/     # Página de resultados da barra de pesquisa
+    ├── cestaservice.ts      # Gerenciamento do carrinho de compras
+    ├── clienteservice.ts    # Autenticação e operações de cliente
+    ├── pedidoservice.ts     # Registro e consulta de pedidos e itens
+    ├── produtoservice.ts    # Consulta de vitrine, categorias e busca de livros
+    ├── app.routes.ts        # Configuração das rotas da aplicação
+    └── app.ts / app.html    # Layout principal (Header, Navbar, RouterOutlet e Footer)
